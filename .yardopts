@@ -1,0 +1,8 @@
+--markup markdown
+--readme README.md
+--files CHANGELOG.md,LICENSE
+--output-dir doc
+--protected
+--private
+--exclude spec/
+--exclude examples/

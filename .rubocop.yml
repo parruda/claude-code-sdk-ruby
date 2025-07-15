@@ -1,0 +1,19 @@
+inherit_gem:
+  rubocop-shopify: rubocop.yml
+
+plugins:
+  - rubocop-rspec
+  - rubocop-rake
+  
+AllCops:
+  TargetRubyVersion: 3.4
+  NewCops: enable
+  Exclude:
+    - '.ruby-lsp/**/*'
+
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false

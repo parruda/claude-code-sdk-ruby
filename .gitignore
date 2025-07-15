@@ -1,0 +1,31 @@
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+
+# rspec failure tracking
+.rspec_status
+
+# Ignore Gemfile.lock for libraries
+Gemfile.lock
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+
+.hbt/
+.prompts.md
+*.gem
+tmp/
+build/
+.claude/settings.local.json
