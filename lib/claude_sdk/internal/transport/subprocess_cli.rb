@@ -334,7 +334,7 @@ module ClaudeSDK
           cmd.push("--permission-prompt-tool", @options.permission_prompt_tool_name)
         end
 
-        cmd.push("--permission-mode", @options.permission_mode.to_s) if @options.permission_mode
+        cmd.push("--permission-mode", format_permission_mode(@options.permission_mode)) if @options.permission_mode
 
         cmd.push("--continue") if @options.continue_conversation
 
@@ -355,6 +355,23 @@ module ClaudeSDK
       def serialize_mcp_servers
         @options.mcp_servers.transform_values do |server|
           server.respond_to?(:to_h) ? server.to_h : server
+        end
+      end
+
+      # Convert permission mode from Ruby symbol format to CLI camelCase format
+      #
+      # @param mode [Symbol] the permission mode symbol
+      # @return [String] the camelCase formatted mode
+      def format_permission_mode(mode)
+        case mode
+        when :default
+          "default"
+        when :accept_edits
+          "acceptEdits"
+        when :bypass_permissions
+          "bypassPermissions"
+        else
+          mode.to_s
         end
       end
     end

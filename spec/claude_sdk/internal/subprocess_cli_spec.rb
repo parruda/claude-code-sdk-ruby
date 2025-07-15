@@ -73,7 +73,7 @@ RSpec.describe(ClaudeSDK::Internal::SubprocessCLI) do
       expect(cmd).to(include("--allowedTools", "Read,Write"))
       expect(cmd).to(include("--disallowedTools", "Bash"))
       expect(cmd).to(include("--model", "claude-3-5-sonnet"))
-      expect(cmd).to(include("--permission-mode", "accept_edits"))
+      expect(cmd).to(include("--permission-mode", "acceptEdits"))
       expect(cmd).to(include("--max-turns", "5"))
     end
 
@@ -93,6 +93,44 @@ RSpec.describe(ClaudeSDK::Internal::SubprocessCLI) do
 
       expect(cmd).to(include("--continue"))
       expect(cmd).to(include("--resume", "session-123"))
+    end
+
+    it "converts permission modes to camelCase" do
+      # Test bypass_permissions
+      options = ClaudeSDK::ClaudeCodeOptions.new(
+        permission_mode: :bypass_permissions,
+      )
+      transport = described_class.new(
+        prompt: "test",
+        options: options,
+        cli_path: cli_path,
+      )
+      cmd = transport.send(:build_command)
+      expect(cmd).to(include("--permission-mode", "bypassPermissions"))
+
+      # Test accept_edits
+      options = ClaudeSDK::ClaudeCodeOptions.new(
+        permission_mode: :accept_edits,
+      )
+      transport = described_class.new(
+        prompt: "test",
+        options: options,
+        cli_path: cli_path,
+      )
+      cmd = transport.send(:build_command)
+      expect(cmd).to(include("--permission-mode", "acceptEdits"))
+
+      # Test default
+      options = ClaudeSDK::ClaudeCodeOptions.new(
+        permission_mode: :default,
+      )
+      transport = described_class.new(
+        prompt: "test",
+        options: options,
+        cli_path: cli_path,
+      )
+      cmd = transport.send(:build_command)
+      expect(cmd).to(include("--permission-mode", "default"))
     end
   end
 
