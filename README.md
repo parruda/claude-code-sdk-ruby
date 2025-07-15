@@ -1,6 +1,6 @@
-# Claude SDK Ruby
+# Claude Code SDK Ruby
 
-[![Gem Version](https://badge.fury.io/rb/claude-sdk-ruby.svg)](https://badge.fury.io/rb/claude-sdk-ruby)
+[![Gem Version](https://badge.fury.io/rb/claude-code-sdk-ruby.svg)](https://badge.fury.io/rb/claude-code-sdk-ruby)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Official Ruby SDK for interacting with Claude Code CLI. This gem provides a Ruby-idiomatic interface to Claude Code with full async support, proper error handling, and comprehensive type definitions.
@@ -10,7 +10,7 @@ Official Ruby SDK for interacting with Claude Code CLI. This gem provides a Ruby
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'claude-sdk-ruby'
+gem 'claude-code-sdk-ruby'
 ```
 
 And then execute:
@@ -22,7 +22,7 @@ bundle install
 Or install it yourself as:
 
 ```bash
-gem install claude-sdk-ruby
+gem install claude-code-sdk-ruby
 ```
 
 ## Prerequisites
@@ -203,17 +203,17 @@ bundle exec rspec
 COVERAGE=true bundle exec rspec
 
 # Build the gem
-gem build claude-sdk-ruby.gemspec
+gem build claude-code-sdk-ruby.gemspec
 
 # Install locally
-gem install ./claude-sdk-ruby-0.1.0.gem
+gem install ./claude-code-sdk-ruby-0.1.0.gem
 ```
 
 To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/anthropics/claude-code-sdk-ruby.
+Bug reports and pull requests are welcome on GitHub at https://github.com/parruda/claude-code-sdk-ruby.
 
 ## License
 

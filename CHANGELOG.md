@@ -7,13 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Changed
-- Removed unused `async-process` dependency
-
-## [0.0.1] - 2024-07-14
+## [0.1.0] - 2025-07-15
 
 ### Added
-- Initial release of claude-sdk-ruby
+- Initial release of claude-code-sdk-ruby
 - Core SDK functionality for interacting with Claude Code CLI
 - Support for async query processing
 - Message types: User, Assistant, System, and Result
@@ -39,5 +36,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - simplecov (~> 0.22)
 - yard (~> 0.9)
 
-[Unreleased]: https://github.com/anthropics/claude-code-sdk-ruby/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/anthropics/claude-code-sdk-ruby/releases/tag/v0.0.1
+[Unreleased]: https://github.com/parruda/claude-code-sdk-ruby/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/parruda/claude-code-sdk-ruby/releases/tag/v0.1.0
