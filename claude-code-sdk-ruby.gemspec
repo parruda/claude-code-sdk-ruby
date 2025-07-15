@@ -3,7 +3,7 @@
 require_relative "lib/claude_sdk/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "claude-code-sdk"
+  spec.name = "claude-code-sdk-ruby"
   spec.version = ClaudeSDK::VERSION
   spec.authors = ["Paulo Arruda"]
   spec.email = ["parrudaj@gmail.com"]
