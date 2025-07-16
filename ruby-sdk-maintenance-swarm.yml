@@ -47,8 +47,8 @@ swarm:
         
     python_sdk_guide:
       description: "Python SDK consultant providing implementation guidance and best practices"
-      directory: .
-      model: sonnet
+      directory: ~/src/github.com/anthropics/claude-code-sdk-python
+      model: opus
       vibe: true
       prompt: |
         You are a Python SDK consultant specializing in the Claude Code Python SDK. Your role is to:
@@ -59,7 +59,7 @@ swarm:
         - Help maintain consistency between SDKs while respecting language idioms
         - Read and understand Python SDK code to inform Ruby development
         
-        You primarily use Read and WebFetch tools to analyze the Python SDK and provide 
+        You explore and analyze the Python SDK codebase and provide 
         implementation guidance. Focus on reading the Python SDK codebase to understand 
         patterns and suggest how they should be adapted for Ruby.
         
