@@ -95,6 +95,22 @@ RSpec.describe(ClaudeSDK::Internal::SubprocessCLI) do
       expect(cmd).to(include("--resume", "session-123"))
     end
 
+    it "includes session ID when provided" do
+      options = ClaudeSDK::ClaudeCodeOptions.new(
+        session_id: "550e8400-e29b-41d4-a716-446655440000",
+      )
+
+      transport = described_class.new(
+        prompt: "Test with session ID",
+        options: options,
+        cli_path: cli_path,
+      )
+
+      cmd = transport.send(:build_command)
+
+      expect(cmd).to(include("--session-id", "550e8400-e29b-41d4-a716-446655440000"))
+    end
+
     it "converts permission modes to camelCase" do
       # Test bypass_permissions
       options = ClaudeSDK::ClaudeCodeOptions.new(

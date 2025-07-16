@@ -340,6 +340,8 @@ module ClaudeSDK
 
         cmd.push("--resume", @options.resume) if @options.resume
 
+        cmd.push("--session-id", @options.session_id) if @options.session_id
+
         if @options.mcp_servers && !@options.mcp_servers.empty?
           mcp_config = { "mcpServers" => serialize_mcp_servers }
           cmd.push("--mcp-config", JSON.generate(mcp_config))
