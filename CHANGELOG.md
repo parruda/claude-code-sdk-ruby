@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2025-07-16
+
+### Added
+- Support for `--session-id` argument to specify a session ID (UUID) for conversations
+  - Added `session_id` parameter to `ClaudeCodeOptions`
+  - CLI command now includes `--session-id` when session ID is provided
+
 ## [0.1.1] - 2025-07-15
 
 ### Fixed
