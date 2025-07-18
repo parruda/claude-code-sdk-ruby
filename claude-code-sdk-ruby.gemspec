@@ -31,6 +31,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Runtime dependencies
-  spec.add_dependency("async", "~> 2.26")
-  spec.add_dependency("logger", "~> 1.7")
+  spec.add_dependency("async", "~> 2")
+  spec.add_dependency("logger", "~> 1")
 end
