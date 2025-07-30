@@ -322,6 +322,7 @@ module ClaudeSDK
   # @!attribute model [String, nil] model to use
   # @!attribute permission_prompt_tool_name [String, nil] permission prompt tool
   # @!attribute cwd [String, Pathname, nil] working directory
+  # @!attribute settings [String, Pathname, nil] path to settings JSON file
   class ClaudeCodeOptions
     attr_accessor :allowed_tools,
       :max_thinking_tokens,
@@ -337,7 +338,8 @@ module ClaudeSDK
       :model,
       :permission_prompt_tool_name,
       :cwd,
-      :session_id
+      :session_id,
+      :settings
 
     # Initialize with default values
     #
@@ -356,6 +358,7 @@ module ClaudeSDK
     # @param permission_prompt_tool_name [String, nil] permission tool
     # @param cwd [String, Pathname, nil] working directory
     # @param session_id [String, nil] session ID (must be a valid UUID)
+    # @param settings [String, Pathname, nil] path to settings JSON file
     def initialize(allowed_tools: [],
       max_thinking_tokens: 8000,
       system_prompt: nil,
@@ -370,7 +373,8 @@ module ClaudeSDK
       model: nil,
       permission_prompt_tool_name: nil,
       cwd: nil,
-      session_id: nil)
+      session_id: nil,
+      settings: nil)
       @allowed_tools = allowed_tools
       @max_thinking_tokens = max_thinking_tokens
       @system_prompt = system_prompt
@@ -386,6 +390,7 @@ module ClaudeSDK
       @permission_prompt_tool_name = permission_prompt_tool_name
       @cwd = cwd
       @session_id = session_id
+      @settings = settings
 
       validate_permission_mode! if permission_mode
     end
@@ -410,6 +415,7 @@ module ClaudeSDK
       hash[:permission_prompt_tool_name] = permission_prompt_tool_name if permission_prompt_tool_name
       hash[:cwd] = cwd.to_s if cwd
       hash[:session_id] = session_id if session_id
+      hash[:settings] = settings.to_s if settings
       hash
     end
 

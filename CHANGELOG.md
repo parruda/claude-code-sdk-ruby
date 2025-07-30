@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.6] - 2025-07-30
+
+### Added
+- Support for `--settings` flag to load additional settings from a JSON file
+  - Added `settings` parameter to `ClaudeCodeOptions`
+  - CLI command now includes `--settings` when settings file path is provided
+  - Added example demonstrating how to use settings files
+  - Updated documentation with Claude Code settings format
+
 ## [0.1.4] - 2025-07-18
 
 ### Fixed

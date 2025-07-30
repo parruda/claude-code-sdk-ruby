@@ -107,6 +107,48 @@ messages.each do |message|
 end
 ```
 
+### Using Settings Files
+
+You can load additional settings from a JSON file:
+
+```ruby
+require 'claude_sdk'
+
+# Create options with a settings file path
+options = ClaudeSDK::ClaudeCodeOptions.new(
+  settings: '/path/to/claude-settings.json',
+  model: 'sonnet'  # Other options can still be specified
+)
+
+ClaudeSDK.query("Hello", options: options) do |message|
+  puts message
+end
+```
+
+The settings file should be a valid JSON file containing Claude Code configuration options:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run lint)",
+      "Bash(npm run test:*)",
+      "Read(~/.zshrc)"
+    ],
+    "deny": [
+      "Bash(curl:*)"
+    ]
+  },
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
+    "OTEL_METRICS_EXPORTER": "otlp"
+  },
+  "model": "claude-3-5-sonnet-20241022",
+  "cleanupPeriodDays": 20,
+  "includeCoAuthoredBy": true
+}
+```
+
 ### Advanced: Using the Internal Client Directly
 
 ```ruby
@@ -166,6 +208,7 @@ The `ClaudeCodeOptions` class supports all Claude Code CLI options:
 - `continue_conversation` - Whether to continue from previous conversation
 - `resume` - Resume from a specific conversation ID
 - `mcp_servers` - MCP server configuration
+- `settings` - Path to a settings JSON file to load additional settings from
 
 ## Error Handling
 

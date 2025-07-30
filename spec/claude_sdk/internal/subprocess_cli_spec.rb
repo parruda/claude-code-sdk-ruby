@@ -111,6 +111,38 @@ RSpec.describe(ClaudeSDK::Internal::SubprocessCLI) do
       expect(cmd).to(include("--session-id", "550e8400-e29b-41d4-a716-446655440000"))
     end
 
+    it "includes settings file path when provided" do
+      options = ClaudeSDK::ClaudeCodeOptions.new(
+        settings: "/path/to/settings.json",
+      )
+
+      transport = described_class.new(
+        prompt: "Test with settings",
+        options: options,
+        cli_path: cli_path,
+      )
+
+      cmd = transport.send(:build_command)
+
+      expect(cmd).to(include("--settings", "/path/to/settings.json"))
+    end
+
+    it "accepts Pathname objects for settings" do
+      options = ClaudeSDK::ClaudeCodeOptions.new(
+        settings: Pathname.new("/path/to/settings.json"),
+      )
+
+      transport = described_class.new(
+        prompt: "Test with pathname settings",
+        options: options,
+        cli_path: cli_path,
+      )
+
+      cmd = transport.send(:build_command)
+
+      expect(cmd).to(include("--settings", "/path/to/settings.json"))
+    end
+
     it "converts permission modes to camelCase" do
       # Test bypass_permissions
       options = ClaudeSDK::ClaudeCodeOptions.new(

@@ -108,6 +108,32 @@ RSpec.describe(ClaudeSDK) do
     end
   end
 
+  describe "query with settings file" do
+    it "passes settings option correctly to the internal client" do
+      client = instance_double(ClaudeSDK::Internal::InternalClient)
+      allow(ClaudeSDK::Internal::InternalClient).to(receive(:new).and_return(client))
+
+      options = claude_options(
+        settings: "/path/to/settings.json",
+      )
+
+      allow(client).to(receive(:process_query)) do |prompt:, options:, &block|
+        expect(prompt).to(eq("Test"))
+        expect(options.settings).to(eq("/path/to/settings.json"))
+
+        message = assistant_message(content: [text_block("Settings loaded")])
+        block.call(message)
+      end
+
+      messages = []
+      described_class.query("Test", options: options) do |msg|
+        messages << msg
+      end
+
+      expect(messages.length).to(eq(1))
+    end
+  end
+
   describe "query without block" do
     it "returns an Enumerator when no block is given" do
       client = instance_double(ClaudeSDK::Internal::InternalClient)
